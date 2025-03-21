@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/QuotesApplication?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/NotesApplication?createDatabaseIfNotExist=true
     username: root
     password: Sunmisola
   jpa:
