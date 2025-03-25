@@ -5,25 +5,20 @@ import jakarta.persistence.*;
 @Entity
 public class Notes {
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_id_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_id_sequence"
-    )
-    int id;
-    private String notes;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment ID
+    private int id;
+
+    @Column(nullable = false, unique = true) // Title should be unique
     private String title;
 
-    public Notes() {
-    }
+    @Column(nullable = false)
+    private String notes;
 
-    public Notes(String notes, String title) {
-        this.notes = notes;
+    public Notes() {}
+
+    public Notes(String title, String notes) {
         this.title = title;
+        this.notes = notes;
     }
 
     public int getId() {
@@ -34,19 +29,19 @@ public class Notes {
         this.id = id;
     }
 
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
